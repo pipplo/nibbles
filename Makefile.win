@@ -1,0 +1,37 @@
+# Project: Nibbles
+# Makefile created by Dev-C++ 4.9.6.0
+
+CC   = g++.exe
+WINDRES = windres.exe
+RES  = Nibbles_private.res
+OBJ  = objs/game.o objs/highscores.o objs/board.o objs/snake.o $(RES)
+LIBS =  -L"C:/Dev-Cpp/lib" -lalleg
+INCS =  -I"C:/Dev-Cpp/include"  -I"C:/Dev-Cpp/include/g++-3"  -I"C:/Dev-Cpp/include"  -I"D:/programming/Nibbles/includes" 
+BIN  = release/Nibbles.exe
+CFLAGS = $(INCS) -Wall -s -O3
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before release/Nibbles.exe all-after
+
+
+clean: clean-custom
+	rm -f $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(OBJ) -o "release\Nibbles.exe" $(LIBS) $(CFLAGS)
+
+objs/game.o: game.cpp
+	$(CC) -c game.cpp -o objs/game.o $(CFLAGS)
+
+objs/highscores.o: highscores.cpp
+	$(CC) -c highscores.cpp -o objs/highscores.o $(CFLAGS)
+
+objs/board.o: board.cpp
+	$(CC) -c board.cpp -o objs/board.o $(CFLAGS)
+
+objs/snake.o: snake.cpp
+	$(CC) -c snake.cpp -o objs/snake.o $(CFLAGS)
+
+Nibbles_private.res: 
+	$(WINDRES) -i NIBBLE~1.RC -I rc -o Nibbles_private.res -O coff 

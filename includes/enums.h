@@ -1,0 +1,2 @@
+enum {HEAD = 0, HBODY, VBODY, TAIL, UL, UR, LL, LR};
+enum {BONUS = 0, DEATH, LIVE, NEWLEVEL};
